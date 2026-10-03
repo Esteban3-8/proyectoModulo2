@@ -1,0 +1,29 @@
+<ActionBar title="Subáreas">
+  <NavigationButton text="Menú" android.systemIcon="ic_menu_more" (tap)="abrirMenu()"></NavigationButton>
+  <ActionItem text="Menú" ios.position="left" (tap)="abrirMenu()"></ActionItem>
+</ActionBar>
+<GridLayout rows="auto, auto, *" class="pagina">
+  <GridLayout row="0" columns="*, auto" class="control-fechas">
+    <Label col="0" text="Mostrar fechas de actualización" textWrap="true" verticalAlignment="center"></Label>
+    <Switch col="1" [checked]="fechas.mostrarFechas" (checkedChange)="cambiarFechas($any($event))" accessibilityLabel="Mostrar fechas de actualización"></Switch>
+  </GridLayout>
+
+  <GridLayout row="1" columns="*, *, *">
+    <Button col="0" text="Usuarios" [nsRouterLink]="['/usuarios']"></Button>
+    <Button col="1" text="Áreas" [nsRouterLink]="['/usuarios/areas']"></Button>
+    <Button col="2" text="Subáreas" [nsRouterLink]="['/usuarios/subareas']"></Button>
+    
+  </GridLayout>
+  <ScrollView row="2">
+
+    <StackLayout class="contenedorSubAreas">
+      
+      <StackLayout *ngFor="let registro of registros" class="divSubArea">
+        <Label [text]="registro.nombre" class="nombre" textWrap="true"></Label>
+        <Label [text]="'Código: ' + registro.codigo" textWrap="true"></Label>
+        <Label *ngIf="fechas.mostrarFechas" [text]="'Última actualización: ' + registro.actualizacion" class="fecha" textWrap="true"></Label>
+      </StackLayout>
+
+    </StackLayout>
+  </ScrollView>
+</GridLayout>

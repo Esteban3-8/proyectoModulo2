@@ -1,0 +1,16 @@
+<RadSideDrawer [drawerTransition]="sideDrawerTransition">
+  <ScrollView tkDrawerContent class="menu">
+    <StackLayout>
+      <Label text="tareaModulo1"></Label>
+      
+      <Button text="Usuarios" (tap)="onNavItemTap('/usuarios')"></Button>
+      <Button text="Áreas" (tap)="onNavItemTap('/usuarios/areas')"></Button>
+      <Button text="Subáreas" (tap)="onNavItemTap('/usuarios/subareas')"></Button>
+      
+  
+    </StackLayout>
+  </ScrollView>
+  <GridLayout tkMainContent>
+    <page-router-outlet></page-router-outlet>
+  </GridLayout>
+</RadSideDrawer>
